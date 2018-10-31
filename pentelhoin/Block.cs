@@ -7,18 +7,18 @@ namespace pentelhoin
 {
     public class Block
     {
-        private int Index { get; set; }
-        private string Data { get; set; }
-        private DateTime TimeStamp { get; set; }
-        private string Hash { get; set; }
-        private string PreviousHash { get; set; }
+        public int Index { get; set; }
+        public string Data { get; set; }
+        public DateTime TimeStamp { get; set; }
+        public string Hash { get; set; }
+        public string PreviousHash { get; set; }
 
-        public Block(int index, string data, DateTime timestamp, string hash, string previousHash)
+        public Block(int index, string data, DateTime timestamp, string previousHash)
         {
             Index = index;
             Data = data;
             TimeStamp = timestamp;
-            Hash = hash;
+            Hash = CalculateHash();
             PreviousHash = previousHash;
         }
 
