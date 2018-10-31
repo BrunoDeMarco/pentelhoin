@@ -1,0 +1,11 @@
+C:\Personal\pentelhoin\pentelhoin\bin\Debug\netcoreapp2.0\pentelhoin.deps.json
+C:\Personal\pentelhoin\pentelhoin\bin\Debug\netcoreapp2.0\pentelhoin.runtimeconfig.json
+C:\Personal\pentelhoin\pentelhoin\bin\Debug\netcoreapp2.0\pentelhoin.runtimeconfig.dev.json
+C:\Personal\pentelhoin\pentelhoin\bin\Debug\netcoreapp2.0\pentelhoin.dll
+C:\Personal\pentelhoin\pentelhoin\bin\Debug\netcoreapp2.0\pentelhoin.pdb
+C:\Personal\pentelhoin\pentelhoin\obj\Debug\netcoreapp2.0\pentelhoin.csprojAssemblyReference.cache
+C:\Personal\pentelhoin\pentelhoin\obj\Debug\netcoreapp2.0\pentelhoin.csproj.CoreCompileInputs.cache
+C:\Personal\pentelhoin\pentelhoin\obj\Debug\netcoreapp2.0\pentelhoin.AssemblyInfoInputs.cache
+C:\Personal\pentelhoin\pentelhoin\obj\Debug\netcoreapp2.0\pentelhoin.AssemblyInfo.cs
+C:\Personal\pentelhoin\pentelhoin\obj\Debug\netcoreapp2.0\pentelhoin.dll
+C:\Personal\pentelhoin\pentelhoin\obj\Debug\netcoreapp2.0\pentelhoin.pdb

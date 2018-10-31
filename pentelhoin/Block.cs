@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace pentelhoin
@@ -19,6 +20,24 @@ namespace pentelhoin
             TimeStamp = timestamp;
             Hash = hash;
             PreviousHash = previousHash;
+        }
+
+        public string CalculateHash()
+        {
+            string baseString = String.Format($"{TimeStamp}-{PreviousHash ?? ""}-{Data}");
+            StringBuilder stringBuilder = new StringBuilder();
+
+            using (SHA256 hash = SHA256.Create())
+            {
+                Encoding encoding = Encoding.UTF8;
+                Byte[] result = hash.ComputeHash(encoding.GetBytes(baseString));
+
+                foreach (Byte b in result)
+                {
+                    stringBuilder.Append(b.ToString("x2"));
+                }
+            }
+            return stringBuilder.ToString();
         }
     }
 }
