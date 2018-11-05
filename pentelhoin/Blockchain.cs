@@ -8,11 +8,18 @@ namespace pentelhoin
     {
         public IList<Block> Chain { get; set; }
         public int Difficulty { get; set; }
+        public IList<Transaction> PendingTransactions;
 
         public Blockchain()
         {
             InitializeChain();
             AddGenesisBlock();
+            ResetPendingTransactions();
+        }
+
+        private void ResetPendingTransactions()
+        {
+             PendingTransactions = new List<Transaction>();
         }
 
         public void InitializeChain()
@@ -27,7 +34,7 @@ namespace pentelhoin
 
         public Block CreateGenesisBlock()
         {
-            return new Block(0, "Ma nigga Jones", new DateTime(1999, 7, 23), null);
+            return new Block(0, new List<Transaction>(), new DateTime(1999, 7, 23), null);
         }
 
         public Block GetLatestBlock()
@@ -42,6 +49,20 @@ namespace pentelhoin
             block.PreviousHash = latestBlock.Hash;
             block.Mine(this.Difficulty);
             Chain.Add(block);
+        }
+
+        public void CreateTransaction(Transaction transaction)
+        {
+            PendingTransactions.Add(transaction);
+        }
+
+        public void ProcessPendingTransactions(string minerAddress)
+        {
+            Block block = new Block(DateTime.Now, PendingTransactions);
+            AddBlock(block);
+
+            ResetPendingTransactions();
+            CreateTransaction(new Transaction(null, minerAddress, 1));
         }
     }
 }

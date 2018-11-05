@@ -2,30 +2,37 @@
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Text;
+using Newtonsoft.Json;
 
 namespace pentelhoin
 {
     public class Block
     {
         public int Index { get; set; }
-        public string Data { get; set; }
+        public IList<Transaction> Transactions { get; set; }
         public DateTime TimeStamp { get; set; }
         public string Hash { get; set; }
         public string PreviousHash { get; set; }
         public int Nonce { get; set; } = 0;
 
-        public Block(int index, string data, DateTime timestamp, string previousHash)
+        public Block(int index, IList<Transaction> transactions, DateTime timestamp, string previousHash)
         {
             Index = index;
-            Data = data;
+            Transactions = transactions;
             TimeStamp = timestamp;
             Hash = CalculateHash();
             PreviousHash = previousHash;
         }
 
+        public Block(DateTime timestamp, IList<Transaction> transactions)
+        {
+            TimeStamp = timestamp;
+            Transactions = transactions;
+        }
+
         public string CalculateHash()
         {
-            string baseString = String.Format($"{TimeStamp}-{PreviousHash ?? ""}-{Data}-{Nonce}");
+            string baseString = String.Format($"{TimeStamp}-{PreviousHash ?? ""}-{JsonConvert.SerializeObject(Transactions)}-{Nonce}");
             StringBuilder stringBuilder = new StringBuilder();
 
             using (SHA256 hash = SHA256.Create())
